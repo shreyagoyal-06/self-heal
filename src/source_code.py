@@ -30,7 +30,8 @@ def update_source_code(files, repo_dir, format_code=True):
     logger.info(f"Updating source code in {repo_dir}")
     for file in files:
         if format_code:
-            contents = format(file["contents"])
+            # contents = format(file["contents"])
+            contents = file["contents"]
         with open(os.path.join(repo_dir, file["filename"]), "w") as f:
             logger.info(f'Writing to {file["filename"]}')
             f.write(contents)
