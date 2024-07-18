@@ -39,15 +39,24 @@ def prompt_user_for_multiline(prompt):
 
 
 # Function to extract Repo Name from a git URL
+import re
+
 def get_repo_name(repo_url):
+    # Define your regular expression here
     pattern = re.compile(r'https://github\.com/[^/]+/([^/]+)\.git')
     matcher = pattern.search(repo_url)
     
+    # Debugging information
     if matcher is None:
         print(f"Regex did not match the repo URL: {repo_url}")
         return None
     
-    return matcher.group(1)
+    print(f"Matcher groups: {matcher.groups()}")
+    repo_name = matcher.group(1)
+    print(f"Extracted repository name: {repo_name}")
+    
+    return repo_name
+
 
 
 def get_repo_project(git_url):
